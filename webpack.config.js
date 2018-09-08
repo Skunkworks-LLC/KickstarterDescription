@@ -8,7 +8,18 @@ module.exports = {
         loader: 'babel-loader',
         query: {
             presets: ['@babel/preset-env', '@babel/preset-react'],	
-        }
+            }
+        },
+        {
+        test: /\.css$/,
+        use: [
+            'style-loader',
+            'css-loader'
+            ]
+        },
+        {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: ['file-loader']
         }
     ]
     },
