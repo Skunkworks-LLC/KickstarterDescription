@@ -50,8 +50,15 @@ html, body, #root {
     flex: 1;
     justify-content: center;
     text-align: center;
-    
+    border: none;
+    user-select: none;
   }
+
+  .navButton:hover {
+    color: #80c6ad;
+  }
+
+  /* #80c6ad */
   
   .backProjectContainer {
     display: flex;
@@ -63,6 +70,7 @@ html, body, #root {
     flex: 1;
     justify-content: center;
     align-items: center;
+    user-select: none;
   }
   
   .buttonDiv {
@@ -84,6 +92,13 @@ html, body, #root {
     height: 50px;
     font-weight: 100;
     font-size: 90%;
+    transition: 0.3s;
+  }
+
+  .backProjectButton:hover {
+    background-color: #307463;
+    margin-top: -2px;
+    box-shadow: 0px 1px 1px 1px #b6b5b5;
   }
   
   .remindMeDiv {
@@ -97,19 +112,86 @@ html, body, #root {
     display: flex;
     flex: 0.7;
     flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
     text-align: center;
-    font-size: 80%;
+    font-size: 70%;
+    margin-left: 10%;
+    user-select: none;
+  }
+
+  .heartImg {
+    flex: 1;
+    height: 20px;
+    margin-right: 5%;
+  }
+
+  .remindMeText {
+    display: flex;
+    flex: 5;
+    align-items: center;
+    color: #9291ab;
+    width: 10%;
+    height: 5%;
+  }
+
+  .remindMeText:hover {
+    color: black;
   }
   
   .navSpace {
     display: flex;
-    flex: 0.2;
+    flex: 0.1;
   }
   
   /* CONTENT */
   .informationDiv {
     display: flex;
     flex: 15;
+    flex-direction: row;
+    justify-content: center;
     background-color: #fbfbfa;
+  }
+
+  /* CAMPAIGN TAB */
+  .campaignTabContainer {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: top;
+    align-items: top;
+    margin-top: 2%;
+  }
+
+  /* FAQ TAB */
+  .faqTabContainer {
+    display: flex;
+    flex: 0;
+    opacity: 0;
+    width: 0;
+    justify-content: center;
+    align-items: top;
+    margin-top: 2%;
+  }
+
+  /* UPDATES TAB */
+  .updatesTabContainer {
+    display: flex;
+    flex: 0;
+    opacity: 0;
+    width: 0;
+    justify-content: center;
+    align-items: top;
+    margin-top: 2%;
+  }
+
+  /* COMMENTS TAB */
+  .commentsTabContainer {
+    display: flex;
+    flex: 0;
+    opacity: 0;
+    width: 0;
+    justify-content: center;
+    align-items: top;
+    margin-top: 2%;
   }
