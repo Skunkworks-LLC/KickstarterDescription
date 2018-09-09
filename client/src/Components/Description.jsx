@@ -6,6 +6,7 @@ import FaqTab from './FaqTab.jsx';
 import UpdatesTab from './UpdatesTab.jsx';
 import CommentsTab from './CommentsTab.jsx';
 import Velocity from 'velocity-animate';
+import Axios from 'axios';
 
 class App extends Component {
     constructor(props) {
@@ -16,14 +17,18 @@ class App extends Component {
         this.inTransition = false;
         this.tabRequest = null;
     }
+
+    componentDidMount() {
+        Axios.post(this.server, {hello: 'hello'});
+    }
     
     fadeIn(tab, callback) {
         let fadeIn = {opacity: 100, width: 100, flex: 1};
         Velocity($(tab), fadeIn, {
             display: 'flex',
-            duration: 1200,
+            duration: 700,
             complete: callback
-        });
+        }, 'ease-in-out');
     }
 
     fadeOut(tab, callback) {

@@ -84,12 +84,12 @@ html, body, #root {
   
   .backProjectButton {
     display: flex;
-    flex: 0.7;
+    flex: 0.6;
     justify-content: center;
     align-items: center;
     text-align: center;
     background-color: #469f74;
-    height: 50px;
+    height: 45px;
     font-weight: 100;
     font-size: 90%;
     transition: 0.3s;
@@ -161,6 +161,8 @@ html, body, #root {
     justify-content: top;
     align-items: top;
     margin-top: 2%;
+    margin-left: 4%;
+    margin-right: 2%;
   }
 
   /* FAQ TAB */
