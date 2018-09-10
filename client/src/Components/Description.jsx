@@ -7,6 +7,7 @@ import UpdatesTab from './UpdatesTab.jsx';
 import CommentsTab from './CommentsTab.jsx';
 import Velocity from 'velocity-animate';
 import ServerManager from './ServerManager.jsx';
+import './Style/Description.css';
 
 class App extends Component {
     constructor(props) {
@@ -14,20 +15,21 @@ class App extends Component {
         this.inTransition = false;
         this.tabRequest = null;
         this.state = {
+            project: {},
             currentTab: 'campaign'
         }
     }
 
     componentDidMount() {
-        ServerManager.getComments(9550).then((comments) => {
-            console.log(comments);
+        ServerManager.getProject(this.props.projectID).then((project) => {
+            this.setState({project: project});
         });
     }
     
     fadeIn(tab, callback) {
         let fadeIn = {opacity: 100, width: 100, flex: 1};
         Velocity($(tab), fadeIn, {
-            display: 'flex',
+            display: 'block',
             duration: 700,
             complete: callback
         }, 'ease-in-out');
@@ -71,10 +73,14 @@ class App extends Component {
             <div className="detailsContainer">
                 <NavBar changeTab={this.changeTab.bind(this)}/>
                 <div className="informationDiv">
-                    <CampaignTab ref="campaign"/>
-                    <FaqTab ref="faq"/>
-                    <UpdatesTab ref="updates"/>
-                    <CommentsTab ref="comments"/>
+                    <CampaignTab ref="campaign"
+                                 content={this.state.project.campaign}/>
+                    <FaqTab ref="faq"
+                            questions={this.state.project.faq}/>
+                    <UpdatesTab ref="updates"
+                                content={this.state.project.updates}/>
+                    <CommentsTab ref="comments"
+                                 content={this.state.project.comments}/>
                 </div>
             </div>
         );

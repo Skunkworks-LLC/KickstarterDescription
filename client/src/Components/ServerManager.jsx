@@ -9,7 +9,7 @@ class _ServerManager {
         let endpoint = `${this.server}/${projectID}/description`;
         return new Promise((resolve,)=> {
             Axios.get(endpoint).then((project) => {
-                resolve(project);
+                resolve(project.data);
             });
         });
     }

@@ -1,4 +1,5 @@
 import React, { Component} from 'react';
+import './Style/UpdatesTab.css';
 
 class UpdatesTab extends Component {
     constructor(props) {

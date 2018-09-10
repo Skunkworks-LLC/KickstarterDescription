@@ -1,0 +1,10 @@
+/* COMMENTS TAB */
+.commentsTabContainer {
+  display: flex;
+  flex: 0;
+  opacity: 0;
+  width: 0;
+  justify-content: center;
+  align-items: top;
+  margin-top: 2%;
+}

@@ -1,6 +1,7 @@
 import React, { Component} from 'react';
 import NavButton from './Utilities/NavButton.jsx';
 import Heart from '../Images/Heart.png';
+import './Style/DescriptionNavBar.css';
 
 class DescriptionNavBar extends Component {
     constructor(props) {

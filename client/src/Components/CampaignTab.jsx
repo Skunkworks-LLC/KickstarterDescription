@@ -1,18 +1,38 @@
 import React, { Component} from 'react';
+import './Style/CampaignTab.css';
 
 class CampaignTab extends Component {
     constructor(props) {
         super(props);
     }
 
+    displayContent({content}) {
+        let sections = [];
+        if (content) {
+            sections.push(this.createSection(content.aboutSection));
+            content.otherSections.forEach((section) => {
+                sections.push(this.createSection(section));
+            });
+        }
+        return sections;
+    }
+
+    createSection(section) {
+        return (
+            <div className="sectionContainer">
+                <p className="sectionTitle"> <b> {section.title} </b>  </p> 
+                <img src={section.image} className="sectionImage"></img>
+                <p className="sectionParagraph"> 
+                    {section.paragraph}
+                </p>
+            </div>
+        );
+    }
+
     render() {
         return (
             <div className="campaignTabContainer" ref="container"> 
-                <p> Guitar Education is in Trouble... </p>
-                <p> ...and only you can help save it! </p>
-                <p> Overly dramatic? Nope! The proliferation of online tools - especially YouTube - has brought us to the brink of an extinction event for great guitar instruction. </p>
-                <p> If you’re an aspiring Rock & Metal guitarist, you need an Avatar - and fast. You know, like that “Dune” dude, or He-Man. </p>
-                <p> Word on the street is, a Six String Savior is about to manifest in book form - a Mighty Tome that harkens back to that guitar-centric era of the 80s and early 90s; before the Internet, before the over-reliance on videos, and before great guitar playing disappeared from the radio and popular culture. In other words, beginning guitarists - </p>
+                {this.displayContent(this.props)}
             </div>
         );
     }

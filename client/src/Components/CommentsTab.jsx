@@ -1,4 +1,5 @@
 import React, { Component} from 'react';
+import './Style/CommentsTab.css';
 
 class CommentsTab extends Component {
     constructor(props) {
