@@ -7,7 +7,7 @@ class CommentsTab extends Component {
 
     render() {
         return (
-            <div class="commentsTabContainer"
+            <div className="commentsTabContainer"
                  ref="container"> 
                 COMMENTS TAB
             </div>

@@ -7,7 +7,7 @@ class FaqTab extends Component {
 
     render() {
         return (
-            <div class="faqTabContainer"
+            <div className="faqTabContainer"
                  ref="container"> 
                  FAQ TAB 
             </div>

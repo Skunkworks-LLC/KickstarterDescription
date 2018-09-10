@@ -7,7 +7,7 @@ class UpdatesTab extends Component {
 
     render() {
         return (
-            <div class="updatesTabContainer"
+            <div className="updatesTabContainer"
                  ref="container"> 
                 UPDATES TAB 
             </div>

@@ -6,20 +6,22 @@ import FaqTab from './FaqTab.jsx';
 import UpdatesTab from './UpdatesTab.jsx';
 import CommentsTab from './CommentsTab.jsx';
 import Velocity from 'velocity-animate';
-import Axios from 'axios';
+import ServerManager from './ServerManager.jsx';
 
 class App extends Component {
     constructor(props) {
         super(props);
+        this.inTransition = false;
+        this.tabRequest = null;
         this.state = {
             currentTab: 'campaign'
         }
-        this.inTransition = false;
-        this.tabRequest = null;
     }
 
     componentDidMount() {
-        Axios.post(this.server, {hello: 'hello'});
+        ServerManager.getComments(9550).then((comments) => {
+            console.log(comments);
+        });
     }
     
     fadeIn(tab, callback) {
@@ -66,9 +68,9 @@ class App extends Component {
 
     render() {
         return (
-            <div class="detailsContainer">
+            <div className="detailsContainer">
                 <NavBar changeTab={this.changeTab.bind(this)}/>
-                <div class="informationDiv">
+                <div className="informationDiv">
                     <CampaignTab ref="campaign"/>
                     <FaqTab ref="faq"/>
                     <UpdatesTab ref="updates"/>

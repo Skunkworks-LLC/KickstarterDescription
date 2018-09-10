@@ -7,6 +7,12 @@ app.set('port', 1600);
 app.use(express.static('../public'));
 app.use(parser.json());
 
+app.get('/allProjects/description', ((request, response) => {
+    db.getAllDescriptions().then((data) => {
+        response.end(JSON.stringify(data));
+    });
+}));
+
 app.get('/:projectId/description', ((request, response) => {
     let id = parseInt(request.params.projectId);
     db.get({id: id}).then((data) => {

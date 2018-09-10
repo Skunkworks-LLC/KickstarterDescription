@@ -7,7 +7,7 @@ class CampaignTab extends Component {
 
     render() {
         return (
-            <div class="campaignTabContainer" ref="container"> 
+            <div className="campaignTabContainer" ref="container"> 
                 <p> Guitar Education is in Trouble... </p>
                 <p> ...and only you can help save it! </p>
                 <p> Overly dramatic? Nope! The proliferation of online tools - especially YouTube - has brought us to the brink of an extinction event for great guitar instruction. </p>
