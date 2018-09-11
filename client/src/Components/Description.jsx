@@ -80,7 +80,8 @@ class App extends Component {
                     <UpdatesTab ref="updates"
                                 content={this.state.project.updates}/>
                     <CommentsTab ref="comments"
-                                 content={this.state.project.comments}/>
+                                 comments={this.state.project.comments}
+                                 changeTab={this.changeTab.bind(this)}/>
                 </div>
             </div>
         );
