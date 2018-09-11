@@ -6,26 +6,30 @@ import FaqTab from './FaqTab.jsx';
 import UpdatesTab from './UpdatesTab.jsx';
 import CommentsTab from './CommentsTab.jsx';
 import Velocity from 'velocity-animate';
-import Axios from 'axios';
+import ServerManager from './ServerManager.jsx';
+import './Style/Description.css';
 
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            currentTab: 'campaign'
-        }
         this.inTransition = false;
         this.tabRequest = null;
+        this.state = {
+            project: {},
+            currentTab: 'campaign'
+        }
     }
 
     componentDidMount() {
-        Axios.post(this.server, {hello: 'hello'});
+        ServerManager.getProject(this.props.projectID).then((project) => {
+            this.setState({project: project});
+        });
     }
     
     fadeIn(tab, callback) {
         let fadeIn = {opacity: 100, width: 100, flex: 1};
         Velocity($(tab), fadeIn, {
-            display: 'flex',
+            display: 'block',
             duration: 700,
             complete: callback
         }, 'ease-in-out');
@@ -66,13 +70,18 @@ class App extends Component {
 
     render() {
         return (
-            <div class="detailsContainer">
+            <div className="detailsContainer">
                 <NavBar changeTab={this.changeTab.bind(this)}/>
-                <div class="informationDiv">
-                    <CampaignTab ref="campaign"/>
-                    <FaqTab ref="faq"/>
-                    <UpdatesTab ref="updates"/>
-                    <CommentsTab ref="comments"/>
+                <div className="informationDiv">
+                    <CampaignTab ref="campaign"
+                                 content={this.state.project.campaign}/>
+                    <FaqTab ref="faq"
+                            questions={this.state.project.faq}/>
+                    <UpdatesTab ref="updates"
+                                content={this.state.project.updates}/>
+                    <CommentsTab ref="comments"
+                                 comments={this.state.project.comments}
+                                 changeTab={this.changeTab.bind(this)}/>
                 </div>
             </div>
         );

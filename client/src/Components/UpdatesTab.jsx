@@ -1,4 +1,5 @@
 import React, { Component} from 'react';
+import './Style/UpdatesTab.css';
 
 class UpdatesTab extends Component {
     constructor(props) {
@@ -7,7 +8,7 @@ class UpdatesTab extends Component {
 
     render() {
         return (
-            <div class="updatesTabContainer"
+            <div className="updatesTabContainer"
                  ref="container"> 
                 UPDATES TAB 
             </div>

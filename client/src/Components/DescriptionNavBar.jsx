@@ -1,6 +1,7 @@
 import React, { Component} from 'react';
 import NavButton from './Utilities/NavButton.jsx';
 import Heart from '../Images/Heart.png';
+import './Style/DescriptionNavBar.css';
 
 class DescriptionNavBar extends Component {
     constructor(props) {
@@ -10,9 +11,9 @@ class DescriptionNavBar extends Component {
     render() {
         return (
             <React.Fragment>
-                <div class="detailsNav">
-                    <div class="navSpace"></div>
-                    <div class="navButtonsContainer">
+                <div className="detailsNav">
+                    <div className="navSpace"></div>
+                    <div className="navButtonsContainer">
                         <NavButton text="Campaign" 
                                    buttonTask={() => { this.props.changeTab('campaign')}}/>
                         <NavButton text="FAQ" 
@@ -22,22 +23,22 @@ class DescriptionNavBar extends Component {
                         <NavButton text="Comments" 
                                    buttonTask={() => { this.props.changeTab('comments')}}/>
                     </div>
-                    <div class="backProjectContainer">
-                        <div class="backProjectDiv">
-                            <div class="buttonDiv">
-                                <div class="backProjectButton">
+                    <div className="backProjectContainer">
+                        <div className="backProjectDiv">
+                            <div className="buttonDiv">
+                                <div className="backProjectButton">
                                     Back this project
                                 </div>
                             </div>
                         </div>
-                        <div class="remindMeDiv"> 
-                            <div class="remindMeButton">
-                                <img class="heartImg" src={Heart}></img>
-                                <div class="remindMeText"> Remind me </div>
+                        <div className="remindMeDiv"> 
+                            <div className="remindMeButton">
+                                <img className="heartImg" src={Heart}></img>
+                                <div className="remindMeText"> Remind me </div>
                             </div>
                         </div>
                     </div>
-                    <div class="navSpace"></div>
+                    <div className="navSpace"></div>
                 </div>
             </React.Fragment>
         );

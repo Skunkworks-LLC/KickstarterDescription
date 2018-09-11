@@ -7,8 +7,8 @@ class NavButton extends Component {
 
     render() {
         return (
-            <div class="navButtonDiv" onClick={this.props.buttonTask}>
-                <div class="navButton"> {this.props.text} </div>
+            <div className="navButtonDiv" onClick={this.props.buttonTask}>
+                <div className="navButton"> {this.props.text} </div>
             </div>
         );
     }
