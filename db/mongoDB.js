@@ -82,6 +82,18 @@ const DescriptionSchema = mongoose.Schema({
 const Description = mongoose.model('Description', DescriptionSchema);
 
 // Request Handlers
+module.exports.getAllDescriptions = () => {
+    return new Promise((resolve, reject) => {
+        Description.find((err, data) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(data);
+            }
+        });
+    });
+}
+
 module.exports.get = (parameter = {}, field) => {
     return new Promise((resolve, reject) => {
         Description.find(parameter, field, (err, data) => {
