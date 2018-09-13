@@ -8,3 +8,41 @@
   align-items: top;
   margin-top: 2%;
 }
+
+.updatesGrowDiv {
+  height: auto;
+  width: 100%;
+}
+
+.updatesMainDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.projectLaunchDiv {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  height: 200px;
+  width: 40%;
+  margin-top: 2%;
+  background-color: #194752;
+}
+
+.projectLaunchDate {
+  display: flex;
+  align-items: flex-end;
+  font-size: 80%;
+  flex: 1;
+  color: white;
+}
+
+.projectLaunchText {
+  display: flex;
+  flex: 1;
+  font-size: 180%;
+  color: white;
+}

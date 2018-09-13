@@ -48,7 +48,8 @@ const CampaignTab = mongoose.model('Campaign', CampaignSchema);
 // QUESTIONS ----------------------------
 const QuestionSchema = mongoose.Schema({
     inquiry: String,
-    answer: String
+    answer: String,
+    lastUpdated: Date
 });
 const Question = mongoose.model('Question', QuestionSchema);
 
@@ -60,6 +61,7 @@ const Question = mongoose.model('Question', QuestionSchema);
 const UpdateSchema = mongoose.Schema({
     event: String,
     title: String,
+    projectLaunchDate: Date,
     date: Date,
     paragraph: String
 });
@@ -76,7 +78,8 @@ const DescriptionSchema = mongoose.Schema({
     faq: [QuestionSchema],
     backers: Number,
     updates: [UpdateSchema],
-    comments: [CommentSchema]
+    comments: [CommentSchema],
+    launchDate: Date
 });
 
 const Description = mongoose.model('Description', DescriptionSchema);
@@ -108,6 +111,7 @@ module.exports.get = (parameter = {}, field) => {
 
 module.exports.postProject = (blueprint) => {
     return new Promise((resolve) => {
+        console.log(blueprint);
         let project = {};
         project.id = blueprint.id;
         project.name = blueprint.name;
@@ -133,11 +137,14 @@ module.exports.postProject = (blueprint) => {
         project.faq = blueprint.faq.questions.map((question) => {
             return new Question({
                 inquiry: question.inquiry,
-                answer: question.answer
+                answer: question.answer,
+                lastUpdated: question.lastUpdated
             });
         });
 
         // UPDATES
+        project.launchDate = blueprint.updates.projectLaunchDate;
+        
         project.updates = blueprint.updates.posts.map((update) => {
             return new Update({
                 event: update.event,

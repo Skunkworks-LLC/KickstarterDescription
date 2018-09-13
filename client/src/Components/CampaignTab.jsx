@@ -10,16 +10,16 @@ class CampaignTab extends Component {
         let sections = [];
         if (content) {
             sections.push(this.createSection(content.aboutSection));
-            content.otherSections.forEach((section) => {
-                sections.push(this.createSection(section));
+            content.otherSections.forEach((section, index) => {
+                sections.push(this.createSection(section, index));
             });
         }
         return sections;
     }
 
-    createSection(section) {
+    createSection(section, index) {
         return (
-            <div className="sectionContainer">
+            <div className="sectionContainer" key={index + Math.random()}>
                 <p className="sectionTitle"> <b> {section.title} </b>  </p> 
                 <img src={section.image} className="sectionImage"></img>
                 <p className="sectionParagraph"> 

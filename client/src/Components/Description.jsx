@@ -78,7 +78,8 @@ class App extends Component {
                     <FaqTab ref="faq"
                             questions={this.state.project.faq}/>
                     <UpdatesTab ref="updates"
-                                content={this.state.project.updates}/>
+                                content={this.state.project.updates}
+                                launchDate={this.state.project.launchDate}/>
                     <CommentsTab ref="comments"
                                  comments={this.state.project.comments}
                                  changeTab={this.changeTab.bind(this)}/>
