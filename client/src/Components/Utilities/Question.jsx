@@ -1,4 +1,5 @@
 import React, { Component} from 'react';
+import moment from 'moment';
 import '../Style/Question.css';
 
 class Question extends Component {
@@ -20,10 +21,10 @@ class Question extends Component {
             <div className="questionBox" onClick={() => {this.toggleAnswer(this.refs.answer)}}>
                 <div className="questionContent">
                     <p className="questionText"> {this.props.inquiry} </p>
-                    <p className="answer" ref="answer"> 
-                        {this.props.answer}
-                        <p className="answerDate"> March 1 2018 </p> 
-                    </p>
+                    <div className="answer" ref="answer"> 
+                        <p className="answerText"> {this.props.answer} </p>
+                        <p className="answerDate"> {moment(this.props.lastUpdated).format('LL')} </p> 
+                    </div>
                 </div>
                 <div className="arrowContainer"> > </div>
             </div>

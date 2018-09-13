@@ -12,6 +12,7 @@ class FaqTab extends Component {
             return questions.map((question, index) => 
                 <Question inquiry={question.inquiry}
                         answer={question.answer}
+                        lastUpdated={question.lastUpdated}
                         id={index}
                         key={index}/>
             );

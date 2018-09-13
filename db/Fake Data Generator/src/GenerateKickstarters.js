@@ -48,6 +48,7 @@ class FAQ {
             let question = {};
             question.inquiry = faker.lorem.sentence().slice(0, -1) + '?';
             question.answer = faker.lorem.paragraph();
+            question.lastUpdated = faker.date.recent();
             questions.push(question);
         }
         return questions;
@@ -56,6 +57,7 @@ class FAQ {
 
 class Updates {
     constructor() {
+        this.projectLaunchDate = faker.date.between('2015-01-01', '2017-12-31');
         this.posts = this.generatePosts(randomNumber(1, 3));
     }
 
@@ -137,6 +139,7 @@ const generateKickStarters = (amount = 1, id, callback) => {
 
 const fillDatabase = (total = 100, amountToCreate = 5) => {
     if (total > 0) {
+        addToResults();
         total -= amountToCreate;
         let id = '' + total + randomNumber(3, 9);
         generateKickStarters(amountToCreate, id, () => {
@@ -145,4 +148,26 @@ const fillDatabase = (total = 100, amountToCreate = 5) => {
     }
 }
 
-fillDatabase();
+// USER INTERACTION
+const input = document.getElementById('amountInput');
+const submitButton = document.getElementById('submitButton');
+const results = document.getElementById('results');
+
+submitButton.addEventListener('click', () => {
+    let amount = parseInt(input.value);
+    if (amount && amount > 0 && amount <= 100) {
+        fillDatabase(amount);
+    }
+});
+
+const addToResultsMaker = () => {
+    var amount = 0;
+    return function(text) {
+        let result = document.createElement('p');
+        result.innerHTML = text || `${amount}: Added new items`;
+        results.appendChild(result);
+        amount++;
+    }
+};
+
+const addToResults = addToResultsMaker();

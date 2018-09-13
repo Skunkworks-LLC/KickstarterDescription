@@ -7,6 +7,12 @@ app.set('port', 1600);
 app.use(express.static('../public'));
 app.use(parser.json());
 
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
 app.get('/allProjects/description', ((request, response) => {
     db.getAllDescriptions().then((data) => {
         response.end(JSON.stringify(data));
