@@ -72,12 +72,11 @@
   height: 45px;
   font-weight: 100;
   font-size: 90%;
-  transition: 0.3s;
+  transition: 0.5s;
 }
 
 .backProjectButton:hover {
   background-color: #307463;
-  margin-top: -2px;
   box-shadow: 0px 1px 1px 1px #b6b5b5;
 }
 

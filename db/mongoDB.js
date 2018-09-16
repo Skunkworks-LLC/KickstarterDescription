@@ -63,7 +63,9 @@ const UpdateSchema = mongoose.Schema({
     title: String,
     projectLaunchDate: Date,
     date: Date,
-    paragraph: String
+    paragraph: String,
+    comments: Number,
+    likes: Number
 });
 const Update = mongoose.model('Update', UpdateSchema);
 
@@ -150,7 +152,9 @@ module.exports.postProject = (blueprint) => {
                 event: update.event,
                 title: update.title,
                 date: update.date,
-                paragraph: update.paragraph
+                paragraph: update.paragraph,
+                comments: update.comments,
+                likes: update.likes
             });
         });
 

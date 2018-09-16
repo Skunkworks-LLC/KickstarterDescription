@@ -8,7 +8,9 @@ class NavButton extends Component {
     render() {
         return (
             <div className="navButtonDiv" onClick={this.props.buttonTask}>
-                <div className="navButton"> {this.props.text} </div>
+                <a href="javascript:void(0)">
+                    <div className="navButton"> {this.props.text} </div>
+                </a>
             </div>
         );
     }

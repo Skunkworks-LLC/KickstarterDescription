@@ -7,6 +7,7 @@ html, body, #root {
     font-family: 'Maison Neue', sans-serif;
     font-weight: 100;
     font-size: 95%;
+    background-color: white;
   }
   
 /* DETAILS CONTAINER */
@@ -14,6 +15,7 @@ html, body, #root {
   display: flex;
   flex: 1;
   flex-direction: column;
+  background-color: white;
 }
 
 /* CONTENT */
@@ -22,6 +24,6 @@ html, body, #root {
   flex: 15;
   flex-direction: row;
   justify-content: center;
-  background-color: #fbfbfa;
+  background-color: white;
   line-height: 1.7;
 }

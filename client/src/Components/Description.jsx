@@ -30,7 +30,7 @@ class App extends Component {
         let fadeIn = {opacity: 100, width: 100, flex: 1};
         Velocity($(tab), fadeIn, {
             display: 'block',
-            duration: 700,
+            duration: 1400,
             complete: callback
         }, 'ease-in-out');
     }
@@ -51,16 +51,15 @@ class App extends Component {
             this.inTransition = true;
             let currentTab = this.refs[this.state.currentTab].refs.container;
             let newTab = this.refs[newTabName].refs.container;
-            this.setState({currentTab: newTabName}, () => {
-                this.fadeOut(currentTab, () => {
-                    this.fadeIn(newTab, () => {
-                        this.inTransition = false;
-                        if (this.tabRequest) {
-                            let wantedTabName = this.tabRequest;
-                            this.tabRequest = null;
-                            this.changeTab(wantedTabName);
-                        }
-                    });
+            this.setState({currentTab: newTabName});
+            this.fadeOut(currentTab, () => {
+                this.fadeIn(newTab, () => {
+                    this.inTransition = false;
+                    if (this.tabRequest) {
+                        let wantedTabName = this.tabRequest;
+                        this.tabRequest = null;
+                        this.changeTab(wantedTabName);
+                    }
                 });
             });
         } else {
@@ -78,7 +77,7 @@ class App extends Component {
                     <FaqTab ref="faq"
                             questions={this.state.project.faq}/>
                     <UpdatesTab ref="updates"
-                                content={this.state.project.updates}
+                                updates={this.state.project.updates}
                                 launchDate={this.state.project.launchDate}/>
                     <CommentsTab ref="comments"
                                  comments={this.state.project.comments}

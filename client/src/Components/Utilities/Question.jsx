@@ -18,16 +18,18 @@ class Question extends Component {
 
     render() {
         return (
-            <div className="questionBox" onClick={() => {this.toggleAnswer(this.refs.answer)}}>
-                <div className="questionContent">
-                    <p className="questionText"> {this.props.inquiry} </p>
-                    <div className="answer" ref="answer"> 
-                        <p className="answerText"> {this.props.answer} </p>
-                        <p className="answerDate"> {moment(this.props.lastUpdated).format('LL')} </p> 
+            <a href="javascript:void(0)">
+                <div className="questionBox" onClick={() => {this.toggleAnswer(this.refs.answer)}}>
+                    <div className="questionContent">
+                        <p className="questionText"> {this.props.inquiry} </p>
+                        <div className="answer" ref="answer"> 
+                            <p className="answerText"> {this.props.answer} </p>
+                            <p className="answerDate"> {moment(this.props.lastUpdated).format('LL')} </p> 
+                        </div>
                     </div>
+                    <div className="arrowContainer"> > </div>
                 </div>
-                <div className="arrowContainer"> > </div>
-            </div>
+            </a>
         );
     }
 }

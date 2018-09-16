@@ -26,15 +26,21 @@ class DescriptionNavBar extends Component {
                     <div className="backProjectContainer">
                         <div className="backProjectDiv">
                             <div className="buttonDiv">
-                                <div className="backProjectButton">
-                                    Back this project
-                                </div>
+                                    <div className="backProjectButton">
+                                        <a href="javascript:void(0)">
+                                            Back this project
+                                        </a>
+                                    </div>
                             </div>
                         </div>
                         <div className="remindMeDiv"> 
                             <div className="remindMeButton">
                                 <img className="heartImg" src={Heart}></img>
-                                <div className="remindMeText"> Remind me </div>
+                                <div className="remindMeText"> 
+                                    <a href="javascript:void(0)">
+                                        Remind me
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>

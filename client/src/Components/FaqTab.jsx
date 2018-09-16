@@ -32,9 +32,13 @@ class FaqTab extends Component {
                             Don't see the answer to your question? 
                             Ask the project creator directly.
                         </p>
-                        <div className="askAQuestionButtonDiv">
-                            <button className="askQuestionButton"> Ask a question </button> 
-                        </div>
+                            <div className="askAQuestionButtonDiv">
+                                    <button className="askQuestionButton">
+                                        <a href="javascript:void(0)">
+                                            Ask a question 
+                                        </a>
+                                    </button> 
+                            </div>
                     </div>
                 </div>
             </div>

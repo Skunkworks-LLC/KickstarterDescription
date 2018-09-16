@@ -10,6 +10,42 @@ const GenerateUser = () => {
     });
 }
 
+const CreateRandomComments = () => {
+    return new Promise((resolve) => {
+        axios.get('https://www.reddit.com/r/gadgets/comments/8k3w8l/.json?limit=5000').then((result) => {
+            let comments = result.data[1].data.children;
+
+            const createComments = (comments, layer = 3) => {
+                let allComments = [];
+
+                if (layer <= 0) {
+                    return allComments;
+                }
+
+                comments.forEach((comment) => {
+                    let newComment = {};
+                    newComment.text = comment.data.body;
+                    newComment.replies = [];
+                    if (comment.data.replies) {
+                        let replies = comment.data.replies.data.children;
+                        newComment.replies = newComment.replies.concat(createComments(replies, layer-1));
+                    }
+                    if (newComment.text) {
+                        allComments.push(newComment);
+                    }
+                });
+
+                return allComments;
+            };
+
+            let globalComments = createComments(comments);
+            resolve(globalComments);
+        });
+    });
+}
+
+
+
 const randomNumber = (max, min) => {
     return Math.floor(Math.random() * min) + max;
 }
@@ -57,7 +93,7 @@ class FAQ {
 
 class Updates {
     constructor() {
-        this.projectLaunchDate = faker.date.between('2015-01-01', '2017-12-31');
+        this.projectLaunchDate = faker.date.between('2015-01-01', '2016-12-31');
         this.posts = this.generatePosts(randomNumber(1, 3));
     }
 
@@ -67,40 +103,59 @@ class Updates {
             let post = {};
             post.event = faker.company.bs();
             post.title = faker.company.bsBuzz();
-            post.date = faker.date.recent();
+            post.date = faker.date.between('2017-01-01', '2018-08-31');
             post.paragraph = faker.lorem.paragraphs();
+            post.comments = randomNumber(10, 1000);
+            post.likes = randomNumber(10, 1000);
             posts.push(post);
         }
         return posts;
     }
 }
 
-const GenerateComment = (odds) => {
+const GenerateComment = (odds, assignedComment) => {
     return new Promise((resolve) => {
         GenerateUser().then((user) => {
             let comment = {};
             let firstName = (user.name.first)[0].toUpperCase() + (user.name.first).substring(1);
             let lastName = (user.name.last)[0].toUpperCase() + (user.name.last).substring(1);
             comment.user = firstName + ' ' + lastName;
-            comment.text = faker.lorem.paragraph();
+            comment.text = assignedComment.text;
             comment.icon = user.picture.thumbnail;
             comment.postTime = faker.date.recent();
             comment.childComments = [];
-            GenerateComments(odds - 0.25).then((childComments) => { 
-                comment.childComments = childComments;
+            // // GenerateComments(odds - 0.25).then((childComments) => { 
+            // //     comment.childComments = childComments;
+            // //     resolve(comment);
+            // // });
+            if (assignedComment.replies.length) {
+                let len = (assignedComment.replies.length > 3) ? 3 : assignedComment.replies.length;
+                var childComments = [];
+                for (var i = 0; i < len; i++) {
+                    childComments.push(GenerateComment(1, assignedComment.replies[i]));
+                }
+                Promise.all(childComments).then((childs) => {
+                    comment.childComments = childs;
+                    resolve(comment) 
+                });
+            } else {
                 resolve(comment);
-            });
+            }
         });
     });
 }
 
-const GenerateComments = (odds = 0.75, max = 5) => {
+const GenerateComments = (odds = 0.75, max = 4) => {
     return new Promise((resolve) => {
         let comments = [];
         if (passesOdds(odds)) {
             let numberOfComments = randomNumber(1, max);
             for (var i = 0; i < numberOfComments; i++) {
-                comments.push(GenerateComment(odds));
+                comments.push(GenerateComment(odds, GlobalComments[counter]));
+                counter++;
+                if (counter > GlobalComments.length) {
+                    counter = 0;
+                }
             }
         }
         Promise.all(comments).then((newComments) => {
@@ -147,6 +202,14 @@ const fillDatabase = (total = 100, amountToCreate = 5) => {
         });
     }
 }
+
+let GlobalComments = null;
+let counter = 0;
+
+CreateRandomComments().then((result) => {
+    GlobalComments = result;
+    console.log('READY');
+})
 
 // USER INTERACTION
 const input = document.getElementById('amountInput');
