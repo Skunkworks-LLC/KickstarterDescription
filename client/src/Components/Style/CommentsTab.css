@@ -38,17 +38,21 @@
 
 .allComments {
   display: flex;
-  margin-top: 3%;
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
+  padding-top: 2%;
   margin-right: 4%;
 }
 
 .useThisSpaceContainer {
   display: flex;
   flex: 1;
+  height: 50%;
   flex-direction: column;
+  border-style: solid;
+  border-width: 4px;
+  border-color: transparent transparent transparent #d4dad7;
 }
 
 .useThisSpaceDiv {
@@ -63,9 +67,6 @@
   flex: 0.7;
   flex-direction: column;
   height: 40%;
-  border-style: solid;
-  border-width: 4px;
-  border-color: transparent transparent transparent #d4dad7;
 }
 
 .cheerCreator {

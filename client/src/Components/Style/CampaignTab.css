@@ -1,9 +1,45 @@
 /* CAMPAIGN TAB */
 .campaignTabContainer {
   flex: 1;
-  margin-left: 5%;
-  margin-right: 3%;
+  margin-left: 10%;
   background-color: white;
+  margin-top: 1%;
+}
+
+.campaignDivider {
+  display: flex;
+  flex: 1;
+}
+
+.likeDiv {
+  display: flex;
+  flex: 1;
+  justify-content: flex-start;
+  padding-left: 2%;
+  font-size: 120%;
+  margin-top: 2%;
+}
+
+.likeThisCampaign {
+  flex: 1;
+  padding-left: 2%;
+  height: 3%;
+  border-style: solid;
+  border-color: transparent transparent transparent #d4dad7;
+  color: #525252;
+  border-width: 4px;
+  line-height: 0.8;
+}
+
+.contentDiv {
+  flex: 1;
+  background-color: white;
+  margin-top: 1%;
+}
+
+.aboutText {
+  font-size: 155%;
+  margin-bottom: 1%;
 }
 
 .sectionContainer {
@@ -11,23 +47,25 @@
   flex: 1;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 3%;
+  line-height: 2;
+  font-size: 110%;
+  margin-bottom: 2%;
 }
 
 .sectionTitle {
   flex: 1;
   font-size: 150%;
-  margin-bottom: 1%;
+  margin-bottom: 3%;
+  color: #2b2b2b;
 }
 
 .sectionImageDiv {
   flex: 1;
-  margin-bottom: 1%;
+  margin-bottom: 5%;
 }
 
 .sectionImage {
-  flex: 1;
-  width: 450px;
-  height: 250px;
-  margin-bottom: 1%;
+  width: 100%;
+  height: auto;
+  box-shadow: 0px 1px 3px 1px #b6b5b5;
 }

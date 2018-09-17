@@ -1,15 +1,32 @@
 import React, { Component} from 'react';
+import $ from 'jquery';
 
 class NavButton extends Component {
     constructor(props) {
         super(props);
     }
 
+    componentDidUpdate() {
+        if (this.props.currentTab === this.props.text.toLowerCase()) {
+            this.refs.buttonText.style.fontWeight = 'bold';
+        } else {
+            this.refs.buttonText.style.fontWeight = 'normal';
+        }
+    }
+
+    getPositionAndWidth() {
+        let position = $(this.refs.buttonDiv).position();
+        let width = $(this.refs.buttonDiv).width();
+        return {position: position, width: width};
+    }
+
     render() {
         return (
-            <div className="navButtonDiv" onClick={this.props.buttonTask}>
+            <div className="navButtonDiv" 
+                 onClick={ this.props.buttonTask }
+                 ref="buttonDiv">
                 <a href="javascript:void(0)">
-                    <div className="navButton"> {this.props.text} </div>
+                    <div className="navButton" ref="buttonText"> {this.props.text} </div>
                 </a>
             </div>
         );

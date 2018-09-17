@@ -1,5 +1,19 @@
-const Picture = (width = 1260, height = 720) => {
-    return `https://source.unsplash.com/random`;
+const CreatePictures = () => {
+    return new Promise((resolve) => {
+        let server = 'https://api.unsplash.com/photos/random';
+        let params = {
+            client_id: '7675446baa2be5640af1b407b133c0f3926c482389743ea034a1f4e4ca6a9b46',
+            orientation: 'landscape',
+            count: 500,
+            query: 'tech'
+        }
+        axios.get(server, { params: params }).then((result) => {
+            let images = result.data.map((image) => {
+                return image.urls.full;
+            });
+            resolve(images);
+        });
+    })
 }
 
 const GenerateUser = () => {
@@ -65,7 +79,12 @@ class Campaign {
         for (var i = 0; i < amount; i++) {
             let section = {};
             section.sectionTitle = product || faker.company.catchPhrase();
-            section.sectionImage = Picture();
+            section.sectionImage = GlobalImages[imageCounter];
+            if (imageCounter > GlobalImages.length) {
+                imageCounter = 0;
+            } else {
+                imageCounter++;
+            }
             section.sectionParagraph = faker.lorem.paragraphs();
             sections.push(section);
         }
@@ -124,10 +143,6 @@ const GenerateComment = (odds, assignedComment) => {
             comment.icon = user.picture.thumbnail;
             comment.postTime = faker.date.recent();
             comment.childComments = [];
-            // // GenerateComments(odds - 0.25).then((childComments) => { 
-            // //     comment.childComments = childComments;
-            // //     resolve(comment);
-            // // });
             if (assignedComment.replies.length) {
                 let len = (assignedComment.replies.length > 3) ? 3 : assignedComment.replies.length;
                 var childComments = [];
@@ -194,22 +209,33 @@ const generateKickStarters = (amount = 1, id, callback) => {
 
 const fillDatabase = (total = 100, amountToCreate = 5) => {
     if (total > 0) {
-        addToResults();
         total -= amountToCreate;
         let id = '' + total + randomNumber(3, 9);
         generateKickStarters(amountToCreate, id, () => {
+            addToResults();
             fillDatabase(total);
         });
     }
 }
+
+// COMMENTS
 
 let GlobalComments = null;
 let counter = 0;
 
 CreateRandomComments().then((result) => {
     GlobalComments = result;
-    console.log('READY');
+    if (GlobalImages) addToResults('READY FOR ACTION');
 })
+
+// PICTURES
+let GlobalImages = null;
+let imageCounter = 0;
+
+CreatePictures().then((pictures) => {
+    GlobalImages = pictures;
+    if (GlobalComments) addToResults('READY FOR ACTION');
+});
 
 // USER INTERACTION
 const input = document.getElementById('amountInput');
@@ -234,3 +260,5 @@ const addToResultsMaker = () => {
 };
 
 const addToResults = addToResultsMaker();
+
+addToResults('LOADING... NOT READY YET');

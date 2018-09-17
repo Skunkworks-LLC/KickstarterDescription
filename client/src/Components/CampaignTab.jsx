@@ -17,6 +17,10 @@ class CampaignTab extends Component {
         return sections;
     }
 
+    hoverImage() {
+        console.log('lol');
+    }
+
     createSection(section, index) {
         return (
             <div className="sectionContainer" key={index + Math.random()}>
@@ -32,7 +36,18 @@ class CampaignTab extends Component {
     render() {
         return (
             <div className="campaignTabContainer" ref="container"> 
-                {this.displayContent(this.props)}
+                <div className="campaignDivider">
+                    <div className="contentDiv">
+                        <div className="aboutText"> About </div>
+                        {this.displayContent(this.props)}
+                    </div>
+                    <div className="likeDiv">
+                        <div className="likeThisCampaign">
+                            <p> <b>Like this campaign?</b></p>
+                            <p>Back this project to receive rewards and early access! </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
