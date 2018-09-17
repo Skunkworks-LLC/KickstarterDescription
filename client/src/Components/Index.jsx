@@ -2,4 +2,4 @@ import React, { Component} from 'react';
 import ReactDOM from 'react-dom';
 import Description from './Description.jsx';
 
-ReactDOM.render(<Description projectID={9593}/>, document.getElementById('root'));
+ReactDOM.render(<Description projectID={1540}/>, document.getElementById('root'));

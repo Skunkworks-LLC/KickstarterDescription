@@ -22,7 +22,7 @@ class NavigationLine extends Component {
     getWantedDimensions({currentTab, buttons}) {
         if (currentTab && buttons) {
             let button = buttons[`${currentTab}Button`].getPositionAndWidth();
-            let pos = button.position.left + 11;
+            let pos = button.position.left + 15;
             let width = button.width + 15;
             if (!this.hasLoaded) {              // For some reason the line starts to the right upon loading
                 pos-=6;

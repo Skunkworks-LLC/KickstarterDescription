@@ -59,7 +59,7 @@
 
 .askQuestionButton {
   flex: 0.8;
-  height: 50%;
+  height: 50px;
   background-color: black;
   color: white;
   font-size: 100%;
