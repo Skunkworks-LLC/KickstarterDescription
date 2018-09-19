@@ -10,7 +10,7 @@ class NavButton extends Component {
         if (this.props.currentTab === this.props.text.toLowerCase()) {
             this.refs.buttonText.style.fontWeight = 'bold';
         } else {
-            this.refs.buttonText.style.fontWeight = 'normal';
+            this.refs.buttonText.style.fontWeight = '100';
         }
     }
 

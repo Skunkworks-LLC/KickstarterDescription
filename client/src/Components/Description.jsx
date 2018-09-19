@@ -14,6 +14,7 @@ class App extends Component {
         super(props);
         this.inTransition = false;
         this.tabRequest = null;
+        this.projectID = null;
         this.state = {
             project: {},
             currentTab: 'campaign'
@@ -21,7 +22,13 @@ class App extends Component {
     }
 
     componentDidMount() {
-        ServerManager.getProject(this.props.projectID).then((project) => {
+        this.projectID = window.location.href.match(/[/]\d+[/]/gi);
+        if (this.projectID) {
+            this.projectID = parseInt(this.projectID.join('').match(/\d+/gi));
+        } else {
+            this.projectID = 0;
+        }
+        ServerManager.getProject(this.projectID).then((project) => {
             this.setState({project: project});
         });
     }

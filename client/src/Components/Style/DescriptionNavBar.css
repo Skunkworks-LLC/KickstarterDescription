@@ -7,6 +7,7 @@
   border-style: solid;
   border-color: #d4dad7 transparent #d4dad7 transparent;
   border-width: 1px;
+  min-height: 100px;
 }
 
 .lineAndButtonContainer {
@@ -31,12 +32,13 @@
 .navButtonDiv {
   display: flex;
   flex: 0.1;
+  height: 5px;
   justify-content: center;
+  align-items: center;
   padding: 5%;
 }
 
 .navButton {
-  display: flex;
   flex: 1;
   justify-content: center;
   text-align: center;
@@ -50,7 +52,7 @@
 
 .backProjectContainer {
   display: flex;
-  flex: 1;
+  flex: 1.5;
 }
 
 .backProjectDiv {
@@ -95,6 +97,7 @@
   flex: 0.5;
   justify-content: flex-start;
   align-items: center;
+  text-decoration: none;
 }
 
 .remindMeButton {
@@ -104,7 +107,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-size: 70%;
+  font-size: 90%;
   margin-left: 10%;
   user-select: none;
 }
@@ -131,4 +134,9 @@
 .navSpace {
   display: flex;
   flex: 0.3;
+}
+
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
 }

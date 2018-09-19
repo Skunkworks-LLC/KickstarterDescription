@@ -3,9 +3,10 @@ const parser = require('body-parser');
 const app = express();
 const db = require('../db/mongoDB.js');
 
-app.set('port', 1600);
-app.use(express.static('../public'));
+app.use(express.static(__dirname + '/../public/'));
+app.use('/:projectID', express.static(__dirname + '/../public/'));
 app.use(parser.json());
+app.set('port', 3002);
 
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");

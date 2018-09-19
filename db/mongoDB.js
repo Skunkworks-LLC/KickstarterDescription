@@ -1,6 +1,6 @@
 // Connect Database
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/fetcher');
+mongoose.connect('mongodb://localhost:27017/descriptions');
 
 // -------------------------------------
 // Schemas and Models ------------------

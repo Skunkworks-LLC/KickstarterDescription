@@ -11,23 +11,29 @@
   flex: 1;
 }
 
-.likeDiv {
+#supportDiv {
   display: flex;
   flex: 1;
-  justify-content: flex-start;
-  padding-left: 5%;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 2%;
   margin-top: 1%;
 }
 
-.likeThisCampaign {
+#supportText {
+  display: flex;
   flex: 1;
-  padding-left: 2%;
-  height: 3%;
-  border-style: solid;
-  border-color: transparent transparent transparent #d4dad7;
-  color: #525252;
-  border-width: 4px;
-  line-height: 0.8;
+  flex-basis: 0.5;
+  font-size: 155%;
+  justify-content: center;
+  margin-top: 1%;
+  margin-bottom: 3%;
+}
+
+#support {
+  display: flex;
+  flex: 80;
+  justify-content: center;
 }
 
 .contentDiv {
@@ -54,6 +60,7 @@
 .sectionTitle {
   flex: 1;
   font-size: 150%;
+  font-weight: 100;
   margin-bottom: 3%;
   color: #2b2b2b;
 }
@@ -67,4 +74,9 @@
   width: 100%;
   height: auto;
   box-shadow: 0px 1px 3px 1px #b6b5b5;
+}
+
+.sectionParagraph {
+  margin-top: 2%;
+  margin-bottom: 2%;
 }

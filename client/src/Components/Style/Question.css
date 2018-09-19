@@ -19,7 +19,8 @@
 }
 
 .questionText {
-  word-wrap: break-word;
+  flex: 1;
+  margin-top: 2%;
 }
 
 .answer {
