@@ -22,9 +22,9 @@ class App extends Component {
     }
 
     componentDidMount() {
-        this.projectID = window.location.href.match(/[/]\d+[/]?/gi);
+        this.projectID = window.location.pathname.slice(10);
         if (this.projectID) {
-            this.projectID = parseInt(this.projectID.join('').match(/\d+/gi)[1]);
+            this.projectID = parseInt(this.projectID.match(/\d+/gi)[0]);
         } else {
             this.projectID = 0;
         }
