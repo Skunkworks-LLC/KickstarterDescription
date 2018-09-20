@@ -2,7 +2,7 @@ import Axios from 'axios';
 
 class _ServerManager {
     constructor() {
-        this.server = window.location.origin;
+        this.server = 'http://52.53.213.163';
     }
 
     getProject(projectID) {
