@@ -1,6 +1,9 @@
 // Connect Database
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/descriptions');
+mongoose.connect('mongodb://kickstarter_database_1/descriptions', (err) => {
+    if (err) throw err;
+    console.log('connected to MONGODB!');
+});
 
 // -------------------------------------
 // Schemas and Models ------------------
@@ -62,6 +65,7 @@ const UpdateSchema = mongoose.Schema({
     event: String,
     title: String,
     projectLaunchDate: Date,
+    // -------------------------------------
     date: Date,
     paragraph: String,
     comments: Number,
@@ -72,7 +76,6 @@ const Update = mongoose.model('Update', UpdateSchema);
 
 // -------------------------------------
 // DESCRIPTION -------------------------
-// -------------------------------------
 const DescriptionSchema = mongoose.Schema({
     id: Number,
     name: String,
