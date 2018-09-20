@@ -43,7 +43,7 @@ class CampaignTab extends Component {
                             <div id="supportText"> Support </div>
                             <div id="support"></div>
                         </div>
-                        <Script url="http://127.0.0.1:3005/dist/bundle.js" />
+                        <Script url="https://s3-us-west-1.amazonaws.com/hrsf101kickstartersupport/bundle.js" />
                     </div>
                 </div>
             </React.Fragment>
