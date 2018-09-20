@@ -4,7 +4,7 @@ const app = express();
 const db = require('../db/mongoDB.js');
 
 app.use(express.static(__dirname + '/../public/'));
-app.use('/:projectID', express.static(__dirname + '/../public/'));
+app.use('/projects/:projectID', express.static(__dirname + '/../public/'));
 app.use(parser.json());
 app.set('port', 3002);
 

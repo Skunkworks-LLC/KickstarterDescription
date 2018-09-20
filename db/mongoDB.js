@@ -1,6 +1,7 @@
 // Connect Database
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://kickstarter_database_1/descriptions', (err) => {
+
+mongoose.connect('mongodb://172.17.0.2/descriptions', (err) => {
     if (err) throw err;
     console.log('connected to MONGODB!');
 });
